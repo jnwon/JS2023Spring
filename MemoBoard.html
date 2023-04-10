@@ -68,6 +68,9 @@
 
 
 function editText(args){
+    /*
+    * 
+    */
     var text = prompt("Edit Text")
     args.parentElement.parentElement.childNodes[1].innerText = text
     console.log(args.parentElement.parentElement.childNodes[1])
@@ -75,12 +78,18 @@ function editText(args){
 }
 
 function deleteNode(args){
+    /*
+    * 
+    */
     args.parentElement.parentElement.remove()
 }
 
 function addNode(args){
+    /*
+    * 
+    */
     root = document.getElementsByClassName("list-group")
-    var text = prompt("Edit Text")
+    var text = prompt("Add Node")
     var str = `
     <div class="list-group-item" style="display: flex; justify-content: space-between;">
         <span>${text}</span>
@@ -92,9 +101,8 @@ function addNode(args){
     </div>
     `
     root[0].insertAdjacentHTML( 'beforeend', str );
-
-
 }
+
 </script>
 </html>
 
