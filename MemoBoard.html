@@ -17,7 +17,7 @@
                 <div>
                     <h2 style="text-align:center;">
                         <a href="#" style="color:black">
-                            <i class="fas fa-plus-circle"></i>
+                            <i class="fas fa-plus-circle" onclick="addNode(this)"></i>
                         </a>
                     </h2>
                     <a href="#">
@@ -26,28 +26,31 @@
                 </div>
                 <br><br/>
                 <div class="list-group">
+
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
                         <span>Hello JS!</span>
                         <div style="display: flex;">
                             <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
                         </div>
                     </div>
+
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
-                        <span>simple memo</span>
+                        <span> Hello HTML </span>
                         <div style="display: flex;">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" style="color:crimson"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
                         </div>
                     </div>
+
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
-                        <span>test data</span>
+                        <span>Hello kebab-case!</span>
                         <div style="display: flex;">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" style="color:crimson"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
                         </div>
                     </div>
                 </div>
@@ -60,4 +63,38 @@
         </div>
     </div>
   </body>
+
+<script>
+
+
+function editText(args){
+    var text = prompt("Edit Text")
+    args.parentElement.parentElement.childNodes[1].innerText = text
+    console.log(args.parentElement.parentElement.childNodes[1])
+    
+}
+
+function deleteNode(args){
+    args.parentElement.parentElement.remove()
+}
+
+function addNode(args){
+    root = document.getElementsByClassName("list-group")
+    var text = prompt("Edit Text")
+    var str = `
+    <div class="list-group-item" style="display: flex; justify-content: space-between;">
+        <span>${text}</span>
+        <div style="display: flex;">
+            <i class="fa fa-edit" onclick="editText(this);"></i>
+            &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+        </div>
+    </div>
+    `
+    root[0].insertAdjacentHTML( 'beforeend', str );
+
+
+}
+</script>
 </html>
+
