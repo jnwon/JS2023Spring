@@ -17,7 +17,7 @@
                 <div>
                     <h2 style="text-align:center;">
                         <a href="#" style="color:black">
-                            <i class="fas fa-plus-circle" onclick="addNode(this)"></i>
+                            <i class="fas fa-plus-circle" ></i>
                         </a>
                     </h2>
                     <a href="#">
@@ -32,7 +32,7 @@
                         <div style="display: flex;">
                             <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@
                         <div style="display: flex;">
                             <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
                         </div>
                     </div>
 
@@ -50,7 +50,7 @@
                         <div style="display: flex;">
                             <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
                         </div>
                     </div>
                 </div>
@@ -68,40 +68,12 @@
 
 
 function editText(args){
-    /*
-    * 
-    */
-    var text = prompt("Edit Text")
-    args.parentElement.parentElement.childNodes[1].innerText = text
-    console.log(args.parentElement.parentElement.childNodes[1])
+    alert("edit called")
     
 }
 
-function deleteNode(args){
-    /*
-    * 
-    */
-    args.parentElement.parentElement.remove()
-}
 
-function addNode(args){
-    /*
-    * 
-    */
-    root = document.getElementsByClassName("list-group")
-    var text = prompt("Add Node")
-    var str = `
-    <div class="list-group-item" style="display: flex; justify-content: space-between;">
-        <span>${text}</span>
-        <div style="display: flex;">
-            <i class="fa fa-edit" onclick="editText(this);"></i>
-            &nbsp;&nbsp;&nbsp;
-            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
-        </div>
-    </div>
-    `
-    root[0].insertAdjacentHTML( 'beforeend', str );
-}
+
 
 </script>
 </html>
