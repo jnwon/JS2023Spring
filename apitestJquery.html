@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3>Ajax with jQuery</h3>
+        <input type="text" id="inputId" placeholder="ID">
+        &nbsp;&nbsp;
+        <input type="text" id="inputPassword" placeholder="Password">
+        <br><br/>
+        <button onclick="loginGet();">login with GET</button>
+        &nbsp;&nbsp;
+        <button onclick="loginPost();">login with POST</button>
+        <br><br/>
+        <span>Result: </span>
+        <span id="loginResult"></span>
+        &nbsp;&nbsp;&nbsp;
+        <span>Name: </span>
+        <span id="name"></span>
+    </body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function loginGet() {
+        var id = document.getElementById('inputId').value;
+        var passwd = document.getElementById('inputPassword').value;
+        var queryString = 'id=' + id + '&password=' + passwd;
+
+        $.ajax({
+            url: 'http://127.0.0.1:5000/login/get?'+queryString,
+            type: 'get',
+            dataType: 'json',
+            success: function(rsp){
+                console.log(rsp);
+                document.getElementById('loginResult').innerText = rsp.result;
+                if(rsp.result == 'success') {
+                    document.getElementById('name').innerText = rsp.name;
+                }
+                else {
+                    document.getElementById('name').innerText = '';
+                }
+            }
+        })
+    }
+
+    function loginPost() {
+        var id = document.getElementById('inputId').value;
+        var passwd = document.getElementById('inputPassword').value;
+        var data = new Object();
+        data.id = id;
+        data.password = passwd;
+
+        $.ajax({
+            url: 'http://127.0.0.1:5000/login/post',
+            type: 'post',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(rsp){
+                console.log(rsp);
+                document.getElementById('loginResult').innerText = rsp.result;
+                if(rsp.result == 'success') {
+                    document.getElementById('name').innerText = rsp.name;
+                }
+                else {
+                    document.getElementById('name').innerText = '';
+                }
+            }
+        })
+    }
+</script>

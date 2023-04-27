@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h3>Ajax with pure javaScript</h3>
+        <input type="text" id="inputId" placeholder="ID">
+        &nbsp;&nbsp;
+        <input type="text" id="inputPassword" placeholder="Password">
+        <br><br/>
+        <button onclick="loginGet();">login with GET</button>
+        &nbsp;&nbsp;
+        <button onclick="loginPost();">login with POST</button>
+        <br><br/>
+        <span>Result: </span>
+        <span id="loginResult"></span>
+        &nbsp;&nbsp;&nbsp;
+        <span>Name: </span>
+        <span id="name"></span>
+    </body>
+</html>
+
+<script>
+    function loginGet() {
+        var id = document.getElementById('inputId').value;
+        var passwd = document.getElementById('inputPassword').value;
+        var queryString = 'id=' + id + '&password=' + passwd;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:5000/login/get?'+queryString);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var _rsp = xhr.responseText;
+                var rsp = JSON.parse(_rsp);
+                console.log(rsp);
+
+                document.getElementById('loginResult').innerText = rsp.result;
+                if(rsp.result == 'success') {
+                    document.getElementById('name').innerText = rsp.name;
+                }
+                else {
+                    document.getElementById('name').innerText = '';
+                }
+            }
+        }
+        xhr.send(); 
+    }
+
+    function loginPost() {
+        var id = document.getElementById('inputId').value;
+        var passwd = document.getElementById('inputPassword').value;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:5000/login/post');
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var _rsp = xhr.responseText;
+                var rsp = JSON.parse(_rsp);
+                console.log(rsp);
+
+                document.getElementById('loginResult').innerText = rsp.result;
+                if(rsp.result == 'success') {
+                    document.getElementById('name').innerText = rsp.name;
+                }
+                else {
+                    document.getElementById('name').innerText = '';
+                }
+            }
+        }
+        var data = new Object();
+        data.id = id;
+        data.password = passwd;
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(data)); 
+    }
+</script>
