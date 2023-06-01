@@ -29,9 +29,9 @@
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
                         <span>Hello JS!</span>
                         <div style="display: flex;">
-                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            <i class="fa fa-edit"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson"></i>
+                            <i class="fa fa-trash" style="color:crimson"></i>
                         </div>
                     </div>
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
@@ -63,8 +63,29 @@
 </html>
 
 <script>
-    // onclick="editText(this);"
-    function editText(e) {
-        e.parentElement.parentElement.getElementsByTagName('span')[0].innerText = prompt('String to be replaced:');
-    }
+    $(document).ready(function() {
+        $('.fa-plus-circle').click(function() {
+            var text = prompt('String to be added:');
+            var str = `
+                <div class="list-group-item" style="display: flex; justify-content: space-between;">
+                    <span>${text}</span>
+                    <div style="display: flex;">
+                        <i class="fa fa-edit"></i>
+                        &nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-trash" style="color:crimson"></i>
+                    </div>
+                </div>
+                `;
+            $('.list-group').append(str);
+        });
+
+        $('.list-group').on('click', '.fa-edit', function() {
+            var newText = prompt('String to be replaced:');
+            $(this).parent().parent().find('span').text(newText);
+        });
+
+        $('.list-group').on('click', '.fa-trash', function() {
+            $(this).parent().parent().remove();
+        });
+    });
 </script>
