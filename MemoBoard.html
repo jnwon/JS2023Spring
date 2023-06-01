@@ -17,7 +17,7 @@
                 <div>
                     <h2 style="text-align:center;">
                         <a href="#" style="color:black">
-                            <i class="fas fa-plus-circle" ></i>
+                            <i class="fas fa-plus-circle"></i>
                         </a>
                     </h2>
                     <a href="#">
@@ -26,31 +26,28 @@
                 </div>
                 <br><br/>
                 <div class="list-group">
-
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
                         <span>Hello JS!</span>
                         <div style="display: flex;">
                             <i class="fa fa-edit" onclick="editText(this);"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson"></i>
                         </div>
                     </div>
-
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
-                        <span> Hello HTML </span>
+                        <span>simple memo</span>
                         <div style="display: flex;">
-                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            <i class="fa fa-edit"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
+                            <i class="fa fa-trash" style="color:crimson"></i>
                         </div>
                     </div>
-
                     <div class="list-group-item" style="display: flex; justify-content: space-between;">
-                        <span>Hello kebab-case!</span>
+                        <span>test data</span>
                         <div style="display: flex;">
-                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            <i class="fa fa-edit"></i>
                             &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-trash" id="first-trash" style="color:crimson" ></i>
+                            <i class="fa fa-trash" style="color:crimson"></i>
                         </div>
                     </div>
                 </div>
@@ -63,18 +60,11 @@
         </div>
     </div>
   </body>
-
-<script>
-
-
-function editText(args){
-    alert("edit called")
-    
-}
-
-
-
-
-</script>
 </html>
 
+<script>
+    // onclick="editText(this);"
+    function editText(e) {
+        e.parentElement.parentElement.getElementsByTagName('span')[0].innerText = prompt('String to be replaced:');
+    }
+</script>
