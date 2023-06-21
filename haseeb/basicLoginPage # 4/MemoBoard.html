@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div>
+                    <h2 style="text-align:center;">
+                        <a href="#" style="color:black">
+                            <i class="fas fa-plus-circle" onclick="addNode(this)"></i>
+                        </a>
+                    </h2>
+                    <a href="#">
+                        <span style="float:right">log out</span>
+                    </a>
+                </div>
+                <br><br/>
+                <div class="list-group">
+
+                    <div class="list-group-item" style="display: flex; justify-content: space-between;">
+                        <span>Hello JS!</span>
+                        <div style="display: flex;">
+                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item" style="display: flex; justify-content: space-between;">
+                        <span> Hello HTML </span>
+                        <div style="display: flex;">
+                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="list-group-item" style="display: flex; justify-content: space-between;">
+                        <span>Hello kebab-case!</span>
+                        <div style="display: flex;">
+                            <i class="fa fa-edit" onclick="editText(this);"></i>
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <br/>
+        <div style="text-align:center">
+            <button class="btn">Save</button>
+        </div>
+    </div>
+  </body>
+
+<script>
+
+
+function editText(args){
+    /*
+    * 
+    */
+    var text = prompt("Edit Text")
+    args.parentElement.parentElement.childNodes[1].innerText = text
+    console.log(args.parentElement.parentElement.childNodes[1])
+    
+}
+
+function deleteNode(args){
+    /*
+    * 
+    */
+    args.parentElement.parentElement.remove()
+}
+
+function addNode(args){
+    /*
+    * 
+    */
+    root = document.getElementsByClassName("list-group")
+    var text = prompt("Add Node")
+    var str = `
+    <div class="list-group-item" style="display: flex; justify-content: space-between;">
+        <span>${text}</span>
+        <div style="display: flex;">
+            <i class="fa fa-edit" onclick="editText(this);"></i>
+            &nbsp;&nbsp;&nbsp;
+            <i class="fa fa-trash" id="first-trash" style="color:crimson" onclick="deleteNode(this)"></i>
+        </div>
+    </div>
+    `
+    root[0].insertAdjacentHTML( 'beforeend', str );
+}
+
+</script>
+</html>
